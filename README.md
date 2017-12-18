@@ -9,7 +9,12 @@ It allows players to register as users of the API and play against other
 
 The API does not currently validate game states.
 
-## API end-points
+## API URL
+
+- Development: http://tic-tac-toe.wdibos.com
+- Production: https://aqueous-atoll-85096.herokuapp.com
+
+## API End Points
 
 | Verb   | URI Pattern            | Controller#Action |
 |--------|------------------------|-------------------|
@@ -24,13 +29,6 @@ The API does not currently validate game states.
 | GET    | `/games/:id/watch`     | `games#watch`     |
 
 All data returned from API actions is formatted as JSON.
-
----
-
-## Deployed URI End Points
-
-Development: http://tic-tac-toe.wdibos.com
-Production: https://aqueous-atoll-85096.herokuapp.com/
 
 ## API Guides
 - [User Documentation](docs/auth.md)
