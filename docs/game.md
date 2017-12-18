@@ -155,6 +155,20 @@ If there are no games associated with the user, the response body will contain
   ]
 }
 ```
+###### Example of using the optional query parameter:
+
+End point to fetch all of a user's games
+```
+/games
+```
+End point to fetch all of a user's games that are over
+```
+/games?over=true
+```
+End point to fetch all of a user's games that are not over
+```
+/games?over=false
+```
 
 ### create
 
