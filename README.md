@@ -35,6 +35,9 @@ All data returned from API actions is formatted as JSON.
 - [Game Documentation](docs/game.md)
 - [Multiplayer Game Documentation](docs/game-multiplayer.md)
 
+## Disclaimer
+This API may be reset or altered at anytime.  The future of this API may not align with the current state and therefore the state your client application expects.  If you would like to maintain a version of this API in its current state for your future use, please fork and clone the repository and launch it on heroku.
+
 ## [License](LICENSE)
 
 1.  All content is licensed under a CC­BY­NC­SA 4.0 license.
