@@ -227,6 +227,7 @@ If the request is successful the status will be 200, OK, and the response body
 This `update` action expects a *PATCH* with changes to to an existing game,
  e.g.:
 
+Using an HTML form element this may look like:
 ```html
 <form>
   <input name="game[cell][index]" type="text" value="0">
@@ -235,6 +236,13 @@ This `update` action expects a *PATCH* with changes to to an existing game,
 </form>
 ```
 
+Alternatively, you may want to store the cell `index` in an HTML element that is not a form.
+To do this, you could utilize data attributes and add the `value` and `over` properties using javascript.
+```html
+<div data-cell-index='0'>
+</div>
+```
+The `update` action expects data formatted as such:
 ```json
 {
   "game": {

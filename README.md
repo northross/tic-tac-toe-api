@@ -31,7 +31,7 @@ The API does not currently validate game states.
 All data returned from API actions is formatted as JSON.
 
 ## API Guides
-- [User Documentation](docs/auth.md)
+- [User Documentation](docs/user.md)
 - [Game Documentation](docs/game.md)
 - [Multiplayer Game Documentation](docs/game-multiplayer.md)
 
