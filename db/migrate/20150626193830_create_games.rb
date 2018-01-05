@@ -1,5 +1,5 @@
 #
-class CreateGames < ActiveRecord::Migration
+class CreateGames < ActiveRecord::Migration[5.1]
   def change
     create_table :games do |t|
       t.references :player_x, null: false

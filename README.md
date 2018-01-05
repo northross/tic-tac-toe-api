@@ -20,8 +20,8 @@ The API does not currently validate game states.
 |--------|------------------------|-------------------|
 | POST   | `/sign-up`             | `users#signup`    |
 | POST   | `/sign-in`             | `users#signin`    |
-| DELETE | `/sign-out/:id`        | `users#signout`   |
-| PATCH  | `/change-password/:id` | `users#changepw`  |
+| DELETE | `/sign-out`            | `users#signout`   |
+| PATCH  | `/change-password`     | `users#changepw`  |
 | GET    | `/games`               | `games#index`     |
 | POST   | `/games`               | `games#create`    |
 | GET    | `/games/:id`           | `games#show`      |
