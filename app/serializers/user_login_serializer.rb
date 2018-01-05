@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UserLoginSerializer < ActiveModel::Serializer
   attributes :id, :email, :token
 

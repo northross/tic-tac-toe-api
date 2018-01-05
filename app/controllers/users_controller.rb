@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class UsersController < ProtectedController
-  skip_before_action :authenticate, only: [:signup, :signin]
+  skip_before_action :authenticate, only: %i[signup signin]
 
   # POST '/sign-up'
   def signup
@@ -7,7 +9,7 @@ class UsersController < ProtectedController
     if user.valid?
       render json: user, status: :created
     else
-      head :bad_request
+      render json: user.errors, status: :bad_request
     end
   end
 
@@ -22,24 +24,25 @@ class UsersController < ProtectedController
     end
   end
 
-  # DELETE '/sign-out/1'
+  # DELETE '/sign-out'
   def signout
-    if current_user == User.find(params[:id])
-      current_user.logout
-      head :no_content
-    else
-      head :unauthorized
-    end
+    current_user.logout
+    head :no_content
   end
 
   # PATCH '/change-password/:id'
   def changepw
-    if !current_user.authenticate(pw_creds[:old]) ||
-       (current_user.password = pw_creds[:new]).blank? ||
-       !current_user.save
-      head :bad_request
-    else
+    # if the the old password authenticates,
+    # the new one is not blank,
+    # and the model saves
+    # then 204
+    # else 400
+    if current_user.authenticate(pw_creds[:old]) &&
+       !(current_user.password = pw_creds[:new]).blank? &&
+       current_user.save
       head :no_content
+    else
+      head :bad_request
     end
   end
 

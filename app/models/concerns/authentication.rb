@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #
 module Authentication
   extend ActiveSupport::Concern
@@ -17,6 +19,8 @@ module Authentication
     before_create :set_token
     after_find :fix_up_token
     validates :email, uniqueness: true
+    validates :email, presence: true
+    validates :password_confirmation, presence: true, on: :create
   end
 
   def logout
