@@ -4,8 +4,8 @@ class Game < ActiveRecord::Base
 
   notify_on_update
 
-  belongs_to :player_x, class_name: 'User', optional: true
-  belongs_to :player_o, class_name: 'User'
+  belongs_to :player_x, class_name: 'User'
+  belongs_to :player_o, class_name: 'User', optional: true
 
   validates :player_x, presence: true
   validates :player_o, presence: true, allow_nil: true
