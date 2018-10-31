@@ -12,7 +12,7 @@ The API does not currently validate game states.
 ## API URL
 
 ```js
-  development: 'http://tic-tac-toe.wdibos.com',
+  development: 'https://tic-tac-toe-wdi.herokuapp.com/',
   production: 'https://aqueous-atoll-85096.herokuapp.com'
 ```
 
