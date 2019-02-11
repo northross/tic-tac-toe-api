@@ -50,7 +50,7 @@ return an empty games array.
 <tr>
 <td>POST</td>
 <td>`/games`</td>
-<td>n/a</td>
+<td>'{}'</td>
 <td>201, Created</td>
 <td><strong>game created</strong></td>
 </tr>
@@ -144,8 +144,7 @@ If there are no games associated with the user, the response body will contain
 
 ```json
 {
-  "games": [
-  ]
+  "games": []
 }
 ```
 
