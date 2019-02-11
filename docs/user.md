@@ -1,5 +1,8 @@
 ## User Actions
 
+_Note_: Sending JSON data via curl scripts will require specifying the content-
+type, however jQuery.ajax defaults to JSON.
+
 *Summary:*
 
 <table>
