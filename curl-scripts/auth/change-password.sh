@@ -1,6 +1,6 @@
 #!/bin/bash
 
-curl "https://aqueous-atoll-85096.herokuapp.com/change-password" \
+curl "http://localhost:4741/change-password" \
   --include \
   --request PATCH \
   --header "Authorization: Token token=${TOKEN}" \

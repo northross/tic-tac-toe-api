@@ -46,19 +46,6 @@ class UsersController < ProtectedController
     end
   end
 
-  def index
-    render json: User.all
-  end
-
-  def show
-    user = User.find(params[:id])
-    render json: user
-  end
-
-  def update
-    head :bad_request
-  end
-
   private
 
   def user_creds
@@ -70,6 +57,4 @@ class UsersController < ProtectedController
     params.require(:passwords)
           .permit(:old, :new)
   end
-
-  private :user_creds, :pw_creds
 end
