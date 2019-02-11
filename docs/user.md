@@ -1,5 +1,8 @@
 ## User Actions
 
+_Note_: Sending JSON data via curl scripts will require specifying the content-
+type, however jQuery.ajax defaults to JSON.
+
 *Summary:*
 
 <table>
@@ -72,7 +75,7 @@
 ### signup
 
 The `create` action expects a *POST* of `credentials` identifying a new user to
- create, e.g. using `getFormFields`:
+create, e.g. using `getFormFields`:
 
 ```html
 <form>
@@ -80,7 +83,6 @@ The `create` action expects a *POST* of `credentials` identifying a new user to
   <input name="credentials[password]" type="password" value="an example password">
   <input name="credentials[password_confirmation]" type="password" value="an example password">
 </form>
-
 ```
 
 or using `JSON`:
@@ -98,8 +100,8 @@ or using `JSON`:
 The `password_confirmation` field is optional.
 
 If the request is successful, the response will have an HTTP Status of 201,
- Created, and the body will be JSON containing the `id` and `email` of the new
- user, e.g.:
+Created, and the body will be JSON containing the `id` and `email` of the new
+user, e.g.:
 
 ```json
 {
@@ -111,12 +113,12 @@ If the request is successful, the response will have an HTTP Status of 201,
 ```
 
 If the request is unsuccessful, the response will have an HTTP Status of 400 Bad
- Request, and the response body will be empty.
+Request, and the response body will be empty.
 
 ### signin
 
 The `signin` action expects a *POST* with `credentials` identifying a previously
- registered user, e.g.:
+registered user, e.g.:
 
 ```html
 <form>
@@ -137,8 +139,8 @@ or:
 ```
 
 If the request is successful, the response will have an HTTP Status of 200 OK,
- and the body will be JSON containing the user's `id`, `email`, and the `token`
- used to authenticate other requests, e.g.:
+and the body will be JSON containing the user's `id`, `email`, and the `token`
+used to authenticate other requests, e.g.:
 
 ```json
 {
@@ -151,31 +153,50 @@ If the request is successful, the response will have an HTTP Status of 200 OK,
 ```
 
 If the request is unsuccessful, the response will have an HTTP Status of 401
- Unauthorized, and the response body will be empty.
+Unauthorized, and the response body will be empty.
 
 ### signout
 
-The `signout` actions is a *DELETE*.
+The `signout` action expects a *DELETE* request and must include the user's
+token but no data is necessary to be sent.
 
 If the request is successful the response will have an HTTP status of 204 No
- Content.
+Content.
 
 If the request is unsuccessful, the response will have a status of 401
- Unauthorized.
+Unauthorized.
 
 ### changepw
 
 The `changepw` action expects a PATCH of `passwords` specifying the `old` and
- `new`.
+`new`, eg.:
+
+```html
+<form>
+  <input name="passwords[old]" type="password">
+  <input name="passwords[new]" type="password">
+</form>
+```
+
+or:
+
+```json
+{
+  "passwords": {
+    "old": "example password",
+    "new": "new example password"
+  }
+}
+```
 
 If the request is successful the response will have an HTTP status of 204 No
- Content.
+Content.
 
 If the request is unsuccessful the reponse will have an HTTP status of 400 Bad
- Request.
+Request.
 
 ---
 
 The `sign-out` and `change-password` requests must include a valid HTTP header
- `Authorization: Token token=<token>` or they will be rejected with a status of
- 401 Unauthorized.
+`Authorization: Token token=<token>` or they will be rejected with a status of
+401 Unauthorized.

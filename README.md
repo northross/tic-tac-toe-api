@@ -3,9 +3,8 @@
 # A Tic-tac-toe data store API
 
 An API to store tic-tac-toe game state and let two players compete across the
- internet.
-It allows players to register as users of the API and play against other
- registered users.
+internet. It allows players to register as users of the API and play against
+other registered users.
 
 The API does not currently validate game states.
 
@@ -33,15 +32,21 @@ The API does not currently validate game states.
 All data returned from API actions is formatted as JSON.
 
 ## API Guides
+
 - [User Documentation](docs/user.md)
 - [Game Documentation](docs/game.md)
 - [Multiplayer Game Documentation](docs/game-multiplayer.md)
 
 ## Disclaimer
-This API may be reset or altered at anytime.  The future of this API may not align with the current state and therefore the state your client application expects.  If you would like to maintain a version of this API in its current state for your future use, please fork and clone the repository and launch it on heroku.
+
+This API may be reset or altered at anytime.  The future of this API may not
+align with the current state and therefore the state your client application
+expects.  If you would like to maintain a version of this API in its current
+state for your future use, please fork and clone the repository and launch it
+on heroku.
 
 ## [License](LICENSE)
 
-1.  All content is licensed under a CC­BY­NC­SA 4.0 license.
-1.  All software code is licensed under GNU GPLv3. For commercial use or
+1. All content is licensed under a CC­BY­NC­SA 4.0 license.
+1. All software code is licensed under GNU GPLv3. For commercial use or
     alternative licensing, please contact legal@ga.co.

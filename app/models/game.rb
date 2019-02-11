@@ -1,4 +1,6 @@
-#
+# frozen_string_literal: true
+
+# class for Game model
 class Game < ActiveRecord::Base
   include ListenNotify
 

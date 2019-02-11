@@ -1,4 +1,6 @@
-#
+# frozen_string_literal: true
+
+# class for Game Serializer
 class GameSerializer < ActiveModel::Serializer
   attributes :id, :cells, :over
 

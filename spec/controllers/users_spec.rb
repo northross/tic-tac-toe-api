@@ -93,35 +93,5 @@ RSpec.describe UsersController do
         expect(response.body).to be_empty
       end
     end
-
-    describe 'GET index' do
-      before(:each) do
-        get :index, format: :json
-      end
-
-      it 'is successful' do
-        expect(response).to be_successful
-      end
-
-      it 'renders a JSON response' do
-        parsed_response = JSON.parse(response.body)
-        expect(parsed_response).not_to be_nil
-      end
-    end
-
-    describe 'GET show' do
-      before(:each) do
-        get :index, params: { id: @user_id }, format: :json
-      end
-
-      it 'is successful' do
-        expect(response).to be_successful
-      end
-
-      it 'renders a JSON response' do
-        parsed_response = JSON.parse(response.body)
-        expect(parsed_response).not_to be_nil
-      end
-    end
   end
 end

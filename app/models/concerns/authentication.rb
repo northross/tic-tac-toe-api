@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-#
+# module for Authentication
 module Authentication
   extend ActiveSupport::Concern
 
-  #
+  # module for Class Methods inside the Authentication module
   module ClassMethods
     def authenticate(email, password)
       user = find_by(email: email)
