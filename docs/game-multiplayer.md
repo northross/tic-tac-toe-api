@@ -1,15 +1,15 @@
-## Multiplayer Game Actions
+# Multiplayer Game Actions
 
-All games action requests must include a valid HTTP header `Authorization: Token
- token=<token>` or they will be rejected with a status of 401 Unauthorized.
+All games action requests must include a valid HTTP header `Authorization:
+Token token=<token>` or they will be rejected with a status of 401 Unauthorized.
 
 All of the game actions, except for `watch`, follow the *RESTful* style.
 
-Games are associated with users, `player_x` and `player_o`.
-Actions, other than update, will only retrieve a game if the user associated
- with the `Authorization` header is one of those two users.
-If this requirement is unmet, the response will be 404 Not Found, except for
- the index action which will return an empty games array.
+Games are associated with users, `player_x` and `player_o`. Actions, other than
+update, will only retrieve a game if the user associated with the
+`Authorization` header is one of those two users. If this requirement is unmet,
+the response will be 404 Not Found, except for the index action which will
+return an empty games array.
 
 *Summary:*
 
@@ -44,10 +44,9 @@ If this requirement is unmet, the response will be 404 Not Found, except for
 </tr>
 </table>
 
+## update
 
-### update
-
-#### join a game as player 'o'
+### join a game as player 'o'
 
 This `update` action expects an empty (e.g `''` or `'{}'` if JSON) *PATCH* to
  join an existing game.
@@ -78,26 +77,25 @@ If the request is unsuccessful, the response will have an HTTP Status of 400 Bad
  Request, and the response body will be empty (game cannot be joined, player_o
  already set or user making request is player_x) or JSON describing the errors.
 
+## watch
 
-### watch
+The `watch` action is handled differently than all the others. Because `watch`
+implements a streaming source of data, we'll use a wrapper around the html5
+object EventSource to handle the events sent.
 
-The `watch` action is handled differently than all the others.  Because `watch`
- implements a streaming source of data, we'll use a wrapper around the html5
- object EventSource to handle the events sent.
-
-You can find the wrapper [here](public/js/resource-watcher-0.1.0.js).
-The wrapper is also available from the deployed app at the path
- `/js/resource-watcher-0.1.0.js`.
+You can find the wrapper [here](public/js/resource-watcher-0.1.0.js). The
+wrapper is also available from the deployed app at the path `/js/resource-
+watcher-0.1.0.js`.
 
 The events that `watch` implements let you know when a game has been updated.
 By using this interface you can write code that lets a player see another's move
- almost as it happens.
-Updates to the game from one player's browser are sent to the other's browser.
+almost as it happens. Updates to the game from one player's browser are sent to
+the other's browser.
 
-You create a watcher object using the resourceWatcher function.
-This function takes two parameters, the watch url and a configuration object
- which must contain the Authorization token, and may contain an optional timeout
- in seconds, e.g.:
+You create a watcher object using the resourceWatcher function. This function
+takes two parameters, the watch url and a configuration object which must
+contain the Authorization token, and may contain an optional timeout in
+seconds, e.g.:
 
 ```js
 let gameWatcher = resourceWatcher('<server>/games/:id/watch', {
@@ -108,10 +106,9 @@ let gameWatcher = resourceWatcher('<server>/games/:id/watch', {
 
 By default, watching a game times-out after 120 seconds.
 
-You should add a handler for `change` and `error` events.
-The error events are not the most informative.
-The change event may pass to your handler an object with a root key of "timeout"
-or "heartbeat".
+You should add a handler for `change` and `error` events. The error events are
+not the most informative. The change event may pass to your handler an object
+with a root key of "timeout" or "heartbeat".
 
 Otherwise, it will pass an object with a root key of "game".  Each key in this
 object will contain an array of length 2.  The first element of such an array

@@ -1,15 +1,15 @@
-## Game Actions
+# Game Actions
 
-All games action requests must include a valid HTTP header `Authorization: Token
- token=<token>` or they will be rejected with a status of 401 Unauthorized.
+All games action requests must include a valid HTTP header `Authorization:
+Token token=<token>` or they will be rejected with a status of 401 Unauthorized.
 
 All of the game actions, except for `watch`, follow the *RESTful* style.
 
-Games are associated with users, `player_x` and `player_o`.
-Actions, other than update, will only retrieve a game if the user associated
- with the `Authorization` header is one of those two users.
-If this requirement is unmet, the response will be 404 Not Found, except for
- the index action which will return an empty games array.
+Games are associated with users, `player_x` and `player_o`. Actions, other than
+update, will only retrieve a game if the user associated with the
+`Authorization` header is one of those two users. If this requirement is unmet,
+the response will be 404 Not Found, except for the index action which will
+return an empty games array.
 
 *Summary:*
 
@@ -104,7 +104,7 @@ If this requirement is unmet, the response will be 404 Not Found, except for
 </tr>
 </table>
 
-### index
+## index
 
 The `index` action is a *GET* that retrieves all the games associated with a
  user.
@@ -155,28 +155,33 @@ If there are no games associated with the user, the response body will contain
   ]
 }
 ```
-###### Example of using the optional query parameter:
+
+### Example of using the optional query parameter
 
 End point to fetch all of a user's games
-```
+
+```md
 /games
 ```
+
 End point to fetch all of a user's games that are over
-```
+
+```md
 /games?over=true
 ```
+
 End point to fetch all of a user's games that are not over
-```
+
+```md
 /games?over=false
 ```
 
-### create
+## create
 
 The `create` action expects a *POST* with an empty body (e.g `''` or `'{}'` if
- JSON).
-If the request is successful, the response will have an HTTP Status of 201
- Created, and the body will contain JSON of the created game with `player_x` set
-to the user calling `create`, e.g.:
+JSON). If the request is successful, the response will have an HTTP Status of
+201 Created, and the body will contain JSON of the created game with `player_x`
+set to the user calling `create`, e.g.:
 
 ```json
 {
@@ -196,11 +201,11 @@ to the user calling `create`, e.g.:
 If the request is unsuccessful, the response will have an HTTP Status of 400 Bad
  Request, and the response body will be JSON describing the errors.
 
-### show
+## show
 
-The `show` action is a *GET* specifing the `id` of the game to retrieve.
-If the request is successful the status will be 200, OK, and the response body
- will contain JSON for the game requested, e.g.:
+The `show` action is a *GET* specifing the `id` of the game to retrieve. If the
+request is successful the status will be 200, OK, and the response body will
+contain JSON for the game requested, e.g.:
 
 ```json
 {
@@ -220,29 +225,23 @@ If the request is successful the status will be 200, OK, and the response body
 }
 ```
 
-### update
+## update
 
-#### update a game's states
+### update a game's states
 
-This `update` action expects a *PATCH* with changes to to an existing game,
- e.g.:
+This `update` action expects a *PATCH* with changes to to an existing game.
 
-Using an HTML form element this may look like:
-```html
-<form>
-  <input name="game[cell][index]" type="text" value="0">
-  <input name="game[cell][value]" type="text" value="x">
-  <input name="game[over]" type="text" value="false">
-</form>
-```
+You may want to store the cell `index` in an HTML element that is not a form.
+To do this, you could utilize data attributes and add the `value` and `over`
+properties using javascript.
 
-Alternatively, you may want to store the cell `index` in an HTML element that is not a form.
-To do this, you could utilize data attributes and add the `value` and `over` properties using javascript.
 ```html
 <div data-cell-index='0'>
 </div>
 ```
+
 The `update` action expects data formatted as such:
+
 ```json
 {
   "game": {
@@ -256,7 +255,7 @@ The `update` action expects data formatted as such:
 ```
 
 If the request is successful, the response will have an HTTP Status of 200 OK,
- and the body will be JSON containing the modified game, e.g.:
+and the body will be JSON containing the modified game, e.g.:
 
 ```json
 {
@@ -278,4 +277,4 @@ If the request is successful, the response will have an HTTP Status of 200 OK,
 ```
 
 If the request is unsuccessful, the response will have an HTTP Status of 400 Bad
- Request, and the response body will be JSON describing the errors.
+Request, and the response body will be JSON describing the errors.

@@ -1,4 +1,6 @@
-#
+# frozen_string_literal: true
+
+# class for Games Controller
 class GamesController < ProtectedController
   include ActionController::Live
 
@@ -99,7 +101,6 @@ class GamesController < ProtectedController
   # 1 - player 'o' joining a game
   # 2 - either player updating the game state
 
-  # rubocop:disable Metrics/AbcSize
   def update
     if (updates = params[:game]) && !updates.empty?
       game = base_query.find(params[:id])

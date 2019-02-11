@@ -1,4 +1,6 @@
-#
+# frozen_string_literal: true
+
+# module for notification of listeners
 module ListenNotify
   extend ActiveSupport::Concern
 
@@ -39,7 +41,7 @@ module ListenNotify
     connection.execute "UNLISTEN \"#{on_update_listen_notify_channel}\""
   end
 
-  #
+  # module for Class Methods in the ListenNotify module
   module ClassMethods
     def notify_on_update
       after_update :notify_update
@@ -52,9 +54,9 @@ module ListenNotify
     end
 
     def listen_for_create
-      connection.execute "LISTEN comments"
+      connection.execute 'LISTEN comments'
       loop do
-        connection.raw_connection.wait_for_notify do |event, pid, data|
+        connection.raw_connection.wait_for_notify do |_event, _pid, data|
           yield data
         end
       end

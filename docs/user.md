@@ -80,7 +80,6 @@ The `create` action expects a *POST* of `credentials` identifying a new user to
   <input name="credentials[password]" type="password" value="an example password">
   <input name="credentials[password_confirmation]" type="password" value="an example password">
 </form>
-
 ```
 
 or using `JSON`:
@@ -111,12 +110,12 @@ If the request is successful, the response will have an HTTP Status of 201,
 ```
 
 If the request is unsuccessful, the response will have an HTTP Status of 400 Bad
- Request, and the response body will be empty.
+Request, and the response body will be empty.
 
 ### signin
 
 The `signin` action expects a *POST* with `credentials` identifying a previously
- registered user, e.g.:
+registered user, e.g.:
 
 ```html
 <form>
@@ -151,31 +150,31 @@ If the request is successful, the response will have an HTTP Status of 200 OK,
 ```
 
 If the request is unsuccessful, the response will have an HTTP Status of 401
- Unauthorized, and the response body will be empty.
+Unauthorized, and the response body will be empty.
 
 ### signout
 
 The `signout` actions is a *DELETE*.
 
 If the request is successful the response will have an HTTP status of 204 No
- Content.
+Content.
 
 If the request is unsuccessful, the response will have a status of 401
- Unauthorized.
+Unauthorized.
 
 ### changepw
 
 The `changepw` action expects a PATCH of `passwords` specifying the `old` and
- `new`.
+`new`.
 
 If the request is successful the response will have an HTTP status of 204 No
- Content.
+Content.
 
 If the request is unsuccessful the reponse will have an HTTP status of 400 Bad
- Request.
+Request.
 
 ---
 
 The `sign-out` and `change-password` requests must include a valid HTTP header
- `Authorization: Token token=<token>` or they will be rejected with a status of
- 401 Unauthorized.
+`Authorization: Token token=<token>` or they will be rejected with a status of
+401 Unauthorized.
