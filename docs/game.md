@@ -107,8 +107,7 @@ return an empty games array.
 ## index
 
 The `index` action is a *GET* that retrieves all the games associated with a
- user.
-The response body will contain JSON containing an array of games, e.g.:
+user. The response body will contain JSON containing an array of games, e.g.:
 
 ```json
 {
@@ -121,10 +120,7 @@ The response body will contain JSON containing an array of games, e.g.:
         "id": 1,
         "email": "and@and.com"
       },
-      "player_o": {
-        "id": 3,
-        "email": "dna@dna.com"
-      }
+      "player_o": null
     },
     {
       "id": 2,
@@ -134,10 +130,7 @@ The response body will contain JSON containing an array of games, e.g.:
         "id": 3,
         "email": "dna@dna.com"
       },
-      "player_o": {
-        "id": 1,
-        "email": "and@and.com"
-      }
+      "player_o": null
     }
   ]
 }
@@ -217,10 +210,7 @@ contain JSON for the game requested, e.g.:
       "id": 1,
       "email": "and@and.com"
     },
-    "player_o": {
-      "id": 3,
-      "email": "dna@dna.com"
-    }
+    "player_o": null
   }
 }
 ```
@@ -267,11 +257,7 @@ and the body will be JSON containing the modified game, e.g.:
       "id": 1,
       "email": "and@and.com"
       },
-    "player_o": {
-      "id": 3,
-      "email":
-      "dna@dna.com"
-    }
+    "player_o": null
   }
 }
 ```
