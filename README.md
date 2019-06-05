@@ -36,6 +36,8 @@ All data returned from API actions is formatted as JSON.
 - [User Documentation](docs/user.md)
 - [Game Documentation](docs/game.md)
 - [Multiplayer Game Documentation](docs/game-multiplayer.md)
+  - If attempting multiplayer make sure to use the dedicated multiplayer API,
+    the url is in the link above.
 
 ## Disclaimer
 
