@@ -1,5 +1,15 @@
 # Multiplayer Game Actions
 
+Before you start attempting multiplayer game actions, make sure to update the
+URLs listed in the `config.js` file.
+
+```js
+const apiUrls = {
+  development: 'https://tic-tac-toe-wdi-multiplayer.herokuapp.com/',
+  production: 'https://tic-tac-toe-wdi-production.herokuapp.com'
+}
+```
+
 All games action requests must include a valid HTTP header `Authorization:
 Token token=<token>` or they will be rejected with a status of 401 Unauthorized.
 
